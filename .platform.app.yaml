@@ -13,10 +13,10 @@ runtime:
         - ctype
         - iconv
         - mbstring
-        - pdo_pgsql
         - sodium
         - xsl
-        
+        - pdo_mysql
+        - redis        
 
 variables:
     php:
@@ -38,7 +38,9 @@ mounts:
     
 
 relationships:
-    database: "database:postgresql"
+    database: "database:mysql"
+    esearch: "search:elasticsearch"
+    rediscache: "redis-persistent:redis"
     
 hooks:
     build: |
